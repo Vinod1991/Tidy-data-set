@@ -32,10 +32,10 @@ sm<-cbind(ss,sy,sx)
 #merges both the data tables such that no repetations are seen or na values are listed in the resultant data table
 m<-merge(rm,sm,all=TRUE,by=c("Subject","Activity",names)) 
 
-#helps to bring all the values into a narrow data table having four columns that is - Subject,Activity 
+#helps to bring all the values into a narrow data table having four columns that is - Subject,Activity,variable and values 
 m2<-melt.data.table(m,id.vars = c("Subject","Activity"),measure.vars = names)
 
-# Provides the mean for the given different values,different columns and different activities 
+# Provides the mean value for the given different values,different columns and different activities 
 new_m2<-dcast(m2,Subject+Activity~variable,mean) 
 
 print(new_m2) #prints the desired data table
